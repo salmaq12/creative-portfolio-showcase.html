@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative World</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(to bottom, lightblue, rgb(227, 209, 227), azure, rgb(208, 208, 234));
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      align-items: center;
+      text-align: center;
+      font-family: 'Open Sans', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Improved realistic moon with CSS */
+    .background-moon {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1000px;
+      /* Increased from 800px */
+      height: 1000px;
+      /* Increased from 800px */
+      border-radius: 50%;
+      background-color: rgba(232, 232, 232, 0.8);
+      /* More realistic moon color with slight transparency */
+      box-shadow:
+        /* Main moon glow */
+        inset -40px -40px 80px rgba(200, 200, 200, 0.9),
+        inset 20px 20px 60px rgba(255, 255, 255, 0.7),
+        /* Moon craters effect */
+        inset 50px 20px 20px rgba(180, 180, 180, 0.3),
+        inset -60px 60px 25px rgba(160, 160, 160, 0.4),
+        inset 30px -70px 30px rgba(170, 170, 170, 0.5),
+        inset -120px -30px 35px rgba(181, 180, 180, 0.4),
+        inset 70px 120px 40px rgba(174, 174, 174, 0.3),
+        /* Outer glow */
+        0 0 100px rgba(255, 255, 255, 0.2);
+      z-index: 1;
+      pointer-events: none;
+      /* Add subtle texture with a gradient */
+      background-image: radial-gradient(circle at 30% 30%,
+          rgba(227, 222, 225, 0.8) 0%,
+          rgba(236, 239, 239, 0.773) 20%,
+          rgba(243, 234, 234, 0.881) 40%,
+          rgba(216, 229, 229, 0.6) 60%,
+          rgba(175, 184, 184, 0.8) 80%,
+          rgba(201, 184, 201, 0.9) 100%);
+    }
+
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 5px white;
+      animation: sparkle 2s infinite;
+    }
+
+    @keyframes sparkle {
+
+      0%,
+      100% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .header {
+      font-family: 'Fantasy', cursive;
+      color: rgb(174, 155, 175);
+      margin: 40px 0 20px;
+      font-size: 50px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .para {
+      margin: 10px 0 20px;
+      color: rgb(212, 137, 208);
+      border: 5px solid rgb(212, 137, 208);
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 19px;
+      font-weight: bold;
+    }
+
+    .biza {
+      color: rgb(171, 171, 185);
+      font-size: 35px;
+      margin: 20px 0;
+    }
+
+    .list {
+      color: rgb(33, 172, 172);
+      list-style: none;
+      font-size: 22px;
+      margin-top: 20px;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    .list li {
+      margin-bottom: 15px;
+    }
+
+    .but {
+      color: rgb(150, 86, 154);
+      background: lightblue;
+      border: none;
+      border-radius: 8px;
+      padding: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 20px auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .but:hover {
+      color: rgb(138, 27, 105);
+      background: rgb(143, 145, 165);
+    }
+
+    .moon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 200px;
+      height: auto;
+      z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        font-size: 30px;
+        margin: 20px;
+      }
+
+      .para {
+        width: 90%;
+        margin: 10px auto;
+      }
+
+      .biza {
+        font-size: 20px;
+        margin: 10px;
+      }
+
+      .list {
+        font-size: 20px;
+      }
+
+      .but {
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      .moon {
+        width: 150px;
+      }
+
+      .background-moon {
+        width: 500px;
+        /* Increased from 400px */
+        height: 500px;
+        /* Increased from 400px */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Improved CSS-based realistic moon -->
+  <div class="background-moon"></div>
+
+  <div class="stars"></div>
+
+  <div class="content">
+    <header class="header">
+      𝓦𝓮𝓵𝓬𝓸𝓶𝓮 𝓽𝓸 𝓶𝓨 𝓬𝓻𝓮𝓪𝓽𝓲𝓿𝓮 𝔀𝓸𝓻𝓵𝓭
+    </header>
+
+    <p class="para">Experience the beauty ❤️ of imagination</p>
+
+    <p class="biza">Explore the depths of <em>creativity</em> that shine through every project:</p>
+
+    <ul class="list">
+      <li>Embrace the journey</li>
+      <li>Discover inspiration</li>
+      <li>Let your creativity soar</li>
+    </ul>
+
+    <button class="but">(っ◔◡◔)っ ♥ Join me on this adventure ♥</button>
+  </div>
+
+
+  <script>
+    function createStar() {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = `${Math.random() * 100}vh`;
+      star.style.left = `${Math.random() * 100}vw`;
+      star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+      document.querySelector('.stars').appendChild(star);
+    }
+
+    // Create 100 stars
+    for (let i = 0; i < 100; i++) {
+      createStar();
+    }
+  </script>
+</body>
+
+</html>
